@@ -722,6 +722,7 @@ int f2fs_create_flush_cmd_control(struct f2fs_sb_info *sbi)
 		return err;
 
 init_thread:
+
 	fcc->f2fs_issue_flush = kthread_run(issue_flush_thread, sbi,
 				"f2fs_flush-%u:%u", MAJOR(dev), MINOR(dev));
 	if (IS_ERR(fcc->f2fs_issue_flush)) {

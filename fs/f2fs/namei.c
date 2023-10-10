@@ -540,6 +540,7 @@ static int f2fs_unlink(struct inode *dir, struct dentry *dentry)
 
 	if (IS_DIRSYNC(dir))
 		f2fs_sync_fs(sbi->sb, 1);
+
 fail:
 	trace_f2fs_unlink_exit(inode, err);
 	return err;
@@ -743,6 +744,9 @@ static int __f2fs_tmpfile(struct inode *dir, struct dentry *dentry,
 	struct f2fs_sb_info *sbi = F2FS_I_SB(dir);
 	struct inode *inode;
 	int err;
+
+	if (unlikely(f2fs_cp_error(sbi)))
+		return -EIO;
 
 	err = dquot_initialize(dir);
 	if (err)

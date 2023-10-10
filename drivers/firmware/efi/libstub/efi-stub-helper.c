@@ -362,10 +362,6 @@ efi_status_t efi_parse_options(char const *cmdline)
 {
 	char *str;
 
-	str = strstr(cmdline, "nokaslr");
-	if (str == cmdline || (str && str > cmdline && *(str - 1) == ' '))
-		__nokaslr = 1;
-
 	/*
 	 * Currently, the only efi= option we look for is 'nochunk', which
 	 * is intended to work around known issues on certain x86 UEFI
@@ -373,6 +369,10 @@ efi_status_t efi_parse_options(char const *cmdline)
 	 */
 	if (!IS_ENABLED(CONFIG_X86))
 		return EFI_SUCCESS;
+
+	str = strstr(cmdline, "nokaslr");
+	if (str == cmdline || (str && str > cmdline && *(str - 1) == ' '))
+		__nokaslr = 1;
 
 	/*
 	 * If no EFI parameters were specified on the cmdline we've got

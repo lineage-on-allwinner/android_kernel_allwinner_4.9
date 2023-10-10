@@ -1387,7 +1387,7 @@ no_page:
 		 * add_to_page_cache_lru lock's the page, and for mmap we expect
 		 * a unlocked page.
 		 */
-		if (page && (fgp_flags & FGP_FOR_MMAP))
+		if (fgp_flags & FGP_FOR_MMAP)
 			unlock_page(page);
 
 	}
