@@ -43,9 +43,9 @@ obj-$(CONFIG_BLK_DEV_NULL_BLK)	+= null_blk.o
 obj-$(CONFIG_ZRAM) += zram/
 
 ifneq ($(CONFIG_SUNXI_NAND),)
-obj-$(CONFIG_SUNXI_NAND) += ../../modules/nand/
+obj-$(CONFIG_SUNXI_NAND) += nand/
 else
-obj-m += ../../modules/nand/
+obj-m += nand/
 endif
 
 skd-y		:= skd_main.o

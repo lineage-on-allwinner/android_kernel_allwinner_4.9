@@ -23,13 +23,6 @@ else
 	BUILD_SPINAND=y
 endif
 
-$(obj)/$(nftl) : FORCE
-ifneq ($(wildcard $(obj)/lib),)
-	$(MAKE) -C $(obj)/.. \
-		LICHEE_KDIR="$(shell pwd)" \
-		build
-endif
-
 nand-y += nand_interface.o
 nand-y += phy2nftl.o
 nand-y += nfd/nand_ota_burn.o
@@ -70,3 +63,4 @@ nand-$(BUILD_RAWNAND) += phy-nand/rawnand/rawnand_timings.o
 nand-$(BUILD_SPINAND) += phy-nand/spinand/spinand_boot.o
 nand-$(BUILD_SPINAND) += phy-nand/spinand/spinand.o
 #nand-y += $(libnand)
+obj-$(CONFIG_SUNXI_NAND) += nand.o
