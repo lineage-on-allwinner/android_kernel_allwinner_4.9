@@ -9,6 +9,7 @@ version = "100"
 machine = "evb"
 
 [platform]
+secure_without_OS=0
 eraseflag   = 1
 debug_mode  = 3
 
@@ -19,6 +20,7 @@ debug_mode  = 3
 ;advert_enable  = 0-close advert logo    1-open advert logo     (只有多核启动下有效)
 ;----------------------------------------------------------------------------------
 [target]
+burn_secure_mode=1
 boot_clock   	= 1008
 storage_type    = -1
 advert_enable   = 0
@@ -39,11 +41,13 @@ aldo1_vol                  = 1001800
 dldo1_vol                  = 1003300
 
 [axp1530_power_sply]
+dcdc1_vol                  = 1000960
 dcdc2_vol                  = 1001000
 aldo1_vol                  = 1001800
 dldo1_vol                  = 1003300
 
 [axp806_power_sply]
+dcdcc_vol                  = 1000960
 dcdce_vol                  = 1003300
 aldo1_vol                  = 1003300
 bldo1_vol                  = 1001800
@@ -91,7 +95,7 @@ ir_addr_code3               = 0xfe01
 ;   recovery_key_used :  模块使能端，    1：开启，0：关闭
 ;   press_mode_enable :  长短按模式使能，1：开启，0：关闭
 ;                        a)如果开启了该模式，则key_work_mode失效，short_press_mode和long_press_mode生>效,
-    ;                      recovery按键可以通过长按和短按来触发两种不同的模式;
+;                      recovery按键可以通过长按和短按来触发两种不同的模式;
 ;                        b)如果关闭了该模式，则key_work_mode生效，recovery按键只能触发一种模式.
 ;   key_work_mode     :  模式选择
 ;                        0: 刷机,
@@ -197,10 +201,10 @@ pll10           = 264
 ;select_gpio1-4	:	选择gpio pin
 ;*****************************************************************************
 [dram_select_para]
-select_mode	= 0
-select_gpio0	= port:PI14<0><1><default><default>
-select_gpio1	= port:PI15<0><1><default><default>
-select_gpio2	= port:PI16<0><1><default><default>
+select_mode	= 1
+select_gpio0	= port:PI1<0><1><default><default>
+select_gpio1	= port:PI9<0><1><default><default>
+select_gpio2	= port:PI13<0><1><default><default>
 select_gpio3	=
 
 
@@ -218,7 +222,7 @@ dram_clk       = 648
 dram_type      = 3
 dram_dx_odt    = 0x03030303
 dram_dx_dri    = 0x0e0e0e0e
-dram_ca_dri    = 0x1c12
+dram_ca_dri    = 0x1c1c
 dram_odt_en    = 1
 dram_para1     = 0x30fb
 dram_para2     = 0x0000
@@ -236,14 +240,14 @@ dram_mr14      = 0x0
 dram_mr16      = 0x0
 dram_mr17      = 0x0
 dram_mr22      = 0x0
-dram_tpr0      = 0xC0000C05
+dram_tpr0      = 0xC0001305
 dram_tpr1      = 0x0
 dram_tpr2      = 0x0
 dram_tpr3      = 0x0
 dram_tpr6      = 0x33808080
-dram_tpr10     = 0x002F0007
+dram_tpr10     = 0x002F0006
 dram_tpr11     = 0xffffdddd
-dram_tpr12     = 0xfedf7557
+dram_tpr12     = 0xfedf7657
 dram_tpr13     = 0x40
 
 [dram_para1]
@@ -280,37 +284,37 @@ dram_tpr12     = 0xfedf7657
 dram_tpr13     = 0x40
 
 [dram_para2]
-dram_clk       = 648
-dram_type      = 3
-dram_dx_odt    = 0x03030303
-dram_dx_dri    = 0x0e0e0e0e
-dram_ca_dri    = 0x1c1c
-dram_odt_en    = 1
-dram_para1     = 0x30fb
-dram_para2     = 0x0000
-dram_mr0       = 0x840
-dram_mr1       = 0x4
-dram_mr2       = 0x8
-dram_mr3       = 0x0
-dram_mr4       = 0x0
-dram_mr5       = 0x0
-dram_mr6       = 0x0
-dram_mr11      = 0x0
-dram_mr12      = 0x0
-dram_mr13      = 0x0
-dram_mr14      = 0x0
-dram_mr16      = 0x0
-dram_mr17      = 0x0
-dram_mr22      = 0x0
-dram_tpr0      = 0xC0001305
-dram_tpr1      = 0x0
-dram_tpr2      = 0x0
-dram_tpr3      = 0x0
-dram_tpr6      = 0x33808080
-dram_tpr10     = 0x002F0006
-dram_tpr11     = 0xffffdddd
-dram_tpr12     = 0xfedf7657
-dram_tpr13     = 0x40
+dram_clk = 576
+dram_type = 3
+dram_dx_odt = 0x03030303
+dram_dx_dri = 0x0e0e0e0e
+dram_ca_dri = 0x1c16
+dram_odt_en = 1
+dram_para1 = 0x30fb
+dram_para2 = 0x0000
+dram_mr0 = 0x840
+dram_mr1 = 0x4
+dram_mr2 = 0x8
+dram_mr3 = 0x0
+dram_mr4 = 0x0
+dram_mr5 = 0x0
+dram_mr6 = 0x0
+dram_mr11 = 0x0
+dram_mr12 = 0x0
+dram_mr13 = 0x0
+dram_mr14 = 0x0
+dram_mr16 = 0x0
+dram_mr17 = 0x0
+dram_mr22 = 0x0
+dram_tpr0 = 0xC0000007
+dram_tpr1 = 0x0
+dram_tpr2 = 0x100
+dram_tpr3 = 0x0
+dram_tpr6 = 0x33808080
+dram_tpr10 = 0x002F6606
+dram_tpr11 = 0xffffdddd 
+dram_tpr12 = 0xfedf7657 
+dram_tpr13 = 0x40
 
 [dram_para3]
 dram_clk       = 648
@@ -346,37 +350,37 @@ dram_tpr12     = 0xfedf7657
 dram_tpr13     = 0x40
 
 [dram_para4]
-dram_clk       = 648
-dram_type      = 3
-dram_dx_odt    = 0x03030303
-dram_dx_dri    = 0x0e0e0e0e
-dram_ca_dri    = 0x1c1c
-dram_odt_en    = 1
-dram_para1     = 0x30fb
-dram_para2     = 0x0000
-dram_mr0       = 0x840
-dram_mr1       = 0x4
-dram_mr2       = 0x8
-dram_mr3       = 0x0
-dram_mr4       = 0x0
-dram_mr5       = 0x0
-dram_mr6       = 0x0
-dram_mr11      = 0x0
-dram_mr12      = 0x0
-dram_mr13      = 0x0
-dram_mr14      = 0x0
-dram_mr16      = 0x0
-dram_mr17      = 0x0
-dram_mr22      = 0x0
-dram_tpr0      = 0xC0001305
-dram_tpr1      = 0x0
-dram_tpr2      = 0x0
-dram_tpr3      = 0x0
-dram_tpr6      = 0x33808080
-dram_tpr10     = 0x002F0006
-dram_tpr11     = 0xffffdddd
-dram_tpr12     = 0xfedf7657
-dram_tpr13     = 0x40
+dram_clk = 576
+dram_type = 3
+dram_dx_odt = 0x03030303
+dram_dx_dri = 0x0e0e0e0e
+dram_ca_dri = 0x1c16
+dram_odt_en = 1
+dram_para1 = 0x30fb
+dram_para2 = 0x0000
+dram_mr0 = 0x840
+dram_mr1 = 0x4
+dram_mr2 = 0x8
+dram_mr3 = 0x0
+dram_mr4 = 0x0
+dram_mr5 = 0x0
+dram_mr6 = 0x0
+dram_mr11 = 0x0
+dram_mr12 = 0x0
+dram_mr13 = 0x0
+dram_mr14 = 0x0
+dram_mr16 = 0x0
+dram_mr17 = 0x0
+dram_mr22 = 0x0
+dram_tpr0 = 0xC0000007
+dram_tpr1 = 0x0
+dram_tpr2 = 0x100
+dram_tpr3 = 0x0
+dram_tpr6 = 0x33808080
+dram_tpr10 = 0x002F6606
+dram_tpr11 = 0xffffdddd 
+dram_tpr12 = 0xfedf7657 
+dram_tpr13 = 0x40
 
 [dram_para5]
 dram_clk       = 648
@@ -413,36 +417,36 @@ dram_tpr13     = 0x40
 
 [dram_para6]
 dram_clk       = 648
-dram_type      = 3
-dram_dx_odt    = 0x03030303
-dram_dx_dri    = 0x0e0e0e0e
+dram_type = 3
+dram_dx_odt = 0x03030303
+dram_dx_dri = 0x0e0e0e0e
 dram_ca_dri    = 0x1c1c
-dram_odt_en    = 1
-dram_para1     = 0x30fb
-dram_para2     = 0x0000
-dram_mr0       = 0x840
-dram_mr1       = 0x4
-dram_mr2       = 0x8
-dram_mr3       = 0x0
-dram_mr4       = 0x0
-dram_mr5       = 0x0
-dram_mr6       = 0x0
-dram_mr11      = 0x0
-dram_mr12      = 0x0
-dram_mr13      = 0x0
-dram_mr14      = 0x0
-dram_mr16      = 0x0
-dram_mr17      = 0x0
-dram_mr22      = 0x0
+dram_odt_en = 1
+dram_para1 = 0x30fb
+dram_para2 = 0x0000
+dram_mr0 = 0x840
+dram_mr1 = 0x4
+dram_mr2 = 0x8
+dram_mr3 = 0x0
+dram_mr4 = 0x0
+dram_mr5 = 0x0
+dram_mr6 = 0x0
+dram_mr11 = 0x0
+dram_mr12 = 0x0
+dram_mr13 = 0x0
+dram_mr14 = 0x0
+dram_mr16 = 0x0
+dram_mr17 = 0x0
+dram_mr22 = 0x0
 dram_tpr0      = 0xC0001305
-dram_tpr1      = 0x0
+dram_tpr1 = 0x0
 dram_tpr2      = 0x0
-dram_tpr3      = 0x0
-dram_tpr6      = 0x33808080
+dram_tpr3 = 0x0
+dram_tpr6 = 0x33808080
 dram_tpr10     = 0x002F0006
-dram_tpr11     = 0xffffdddd
-dram_tpr12     = 0xfedf7657
-dram_tpr13     = 0x40
+dram_tpr11 = 0xffffdddd 
+dram_tpr12 = 0xfedf7657 
+dram_tpr13 = 0x40
 
 [dram_para7]
 dram_clk       = 648
@@ -791,11 +795,11 @@ nand0_p1 = 0x55aaaa55
 nand0_p2 = 0x55aaaa55
 nand0_p3 = 0x55aaaa55
 
-
 [secure]
 dram_region_mbytes       = 80
 drm_region_mbytes        = 0
 drm_region_start_mbytes  = 0
+
 [leds]
 compatible	= "allwinner,fd655_dev"
 leds_used		= 1
