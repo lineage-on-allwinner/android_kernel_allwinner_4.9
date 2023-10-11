@@ -32,6 +32,11 @@ always		:= $(dtb-y)
 
 targets += dtbs
 
+# Include specified fex file into dtc args if required
+ifeq ($(CONFIG_DT_INCLUDE_FEX),y)
+DTC_FLAGS := -F $(addprefix $(dtstree)/fex/, $(CONFIG_DT_FEX_NAME))
+endif
+
 DTB_NAMES := $(subst $\",,$(CONFIG_BUILD_ARM64_APPENDED_DTB_IMAGE_NAMES))
 ifneq ($(DTB_NAMES),)
 DTB_LIST := $(addsuffix .dtb,$(DTB_NAMES))

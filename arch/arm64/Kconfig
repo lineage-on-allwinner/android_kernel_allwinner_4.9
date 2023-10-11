@@ -1113,6 +1113,19 @@ config BUILD_ARM64_APPENDED_DTB_IMAGE_NAMES
 	  Space separated list of names of dtbs to append when
 	  building a concatenated Image.gz-dtb.
 
+config DT_INCLUDE_FEX
+	bool "Enable folding of Allwiner FEX into built devicetree"
+	depends on OF
+	help
+	  Enabling this option will cause a specified FEX file to be
+	  passed into dtc when compiling the device tree(s).
+
+config DT_FEX_NAME
+	string "Name of FEX to be folded into built devicetree"
+	depends on DT_INCLUDE_FEX
+	help
+	  Path to an Allwinner FEX file to be passed into dtc.
+
 endmenu
 
 menu "Userspace binary formats"
