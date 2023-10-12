@@ -1,3 +1,5 @@
+XR829_SRC := $(srctree)/drivers/net/wireless/xr829
+
 ##################### XRADIO Wi-Fi Config #######################
 CONFIG_XRMAC_RC_DEFAULT = "minstrel_ht"
 CONFIG_XRMAC_RC_PID = n
@@ -41,10 +43,7 @@ DRV_FLAGS += $(call boolen_flag,CONFIG_XRADIO_DUMP_ON_ERROR,y)
 DRV_FLAGS += $(call boolen_flag,CONFIG_XRADIO_DEBUGFS,y)
 
 ccflags-y += $(DRV_FLAGS)
-
-NOSTDINC_FLAGS := -I$(src)/include/
-
-ldflags-y += --strip-debug
+ccflags-y += -I$(XR829_SRC)/include/
 
 # xradio_mac objects
 xradio_mac-y := \
@@ -95,7 +94,7 @@ xradio_mac-$(CONFIG_XRMAC_MESH) += \
 xradio_mac-$(CONFIG_PM) += umac/pm.o
 
 xradio_mac-$(CONFIG_XRMAC_DRIVER_API_TRACER) += umac/driver-trace.o
-CFLAGS_driver-trace.o := -I$(src)
+CFLAGS_driver-trace.o := -I$(XR829_SRC)
 
 # objects for PID algorithm
 rc80211_pid-y := umac/rc80211_pid_algo.o
@@ -208,7 +207,4 @@ ccflags-y += -DBOOT_NOT_READY_FIX
 # Debug for hwx_BUG12:P2P setting crash
 ccflags-y += -DDEBUG_P2P_SETTING_CRASH
 
-EXTRA_CFLAGS += -Wno-error=date-time
-EXTRA_CFLAGS +=-Wno-date-time
-
-clean-files += Module.symvers Module.markers modules modules.order
+ccflags-y += -Wno-error=date-time -Wno-date-time

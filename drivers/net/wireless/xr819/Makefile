@@ -1,3 +1,5 @@
+XR819_SRC := $(srctree)/drivers/net/wireless/xr819
+
 ##################### XRADIO Wi-Fi Config #######################
 CONFIG_XRMAC_RC_DEFAULT = "minstrel_ht"
 CONFIG_XRMAC_RC_PID = n
@@ -41,10 +43,7 @@ DRV_FLAGS += $(call boolen_flag,CONFIG_XRADIO_DUMP_ON_ERROR,y)
 DRV_FLAGS += $(call boolen_flag,CONFIG_XRADIO_DEBUGFS,y)
 
 ccflags-y += $(DRV_FLAGS)
-
-NOSTDINC_FLAGS := -I$(src)/include/
-
-ldflags-y += --strip-debug
+ccflags-y += -I$(XR819_SRC)/include/
 
 # xradio_mac objects
 xradio_mac-y := \
@@ -95,7 +94,7 @@ xradio_mac-$(CONFIG_XRMAC_MESH) += \
 xradio_mac-$(CONFIG_PM) += umac/pm.o
 
 xradio_mac-$(CONFIG_XRMAC_DRIVER_API_TRACER) += umac/driver-trace.o
-CFLAGS_driver-trace.o := -I$(src)
+CFLAGS_driver-trace.o := -I$(XR819_SRC)
 
 # objects for PID algorithm
 rc80211_pid-y := umac/rc80211_pid_algo.o
@@ -191,7 +190,4 @@ ccflags-y += -DTES_P2P_0002_ROC_RESTART
 ccflags-y += -DTES_P2P_000B_EXTEND_INACTIVITY_CNT
 ccflags-y += -DTES_P2P_000B_DISABLE_EAPOL_FILTER
 
-EXTRA_CFLAGS += -Wno-error=date-time
-EXTRA_CFLAGS +=-Wno-date-time
-
-clean-files += Module.symvers Module.markers modules modules.order
+ccflags-y += -Wno-error=date-time -Wno-date-time

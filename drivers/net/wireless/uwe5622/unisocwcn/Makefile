@@ -1,14 +1,4 @@
-PWD := $(shell pwd)
-CURFOLDER ?= $(pwd)
-
-LD_CFLAGS += -D__linux__
-EXTRA_CFLAGS=-fno-pic
-
-all_dependencies := driver
-driver_dependencies :=
-BIN2HEX_TOOL := $(PWD)/fw/bin2hex
-firmware_file := $(PWD)/fw/wcnmodem.bin
-firmware_target := $(PWD)/fw/wcnmodem.bin.hex
+UNISOCWCN_SRC := $(srctree)/drivers/net/wireless/uwe5622/unisocwcn
 
 #### Global configs for each item ######
 ifeq ($(CFG_HI_WIFI_DEVICE_UWE5621),y)
@@ -114,9 +104,9 @@ ccflags-y += -DCONFIG_WCN_USB
 endif
 
 #### include path ######
-ccflags-y += -I$(src)/include/
-ccflags-y += -I$(src)/platform/
-ccflags-y += -I$(src)/platform/rf/
+ccflags-y += -I$(UNISOCWCN_SRC)/include/
+ccflags-y += -I$(UNISOCWCN_SRC)/platform/
+ccflags-y += -I$(UNISOCWCN_SRC)/platform/rf/
 
 #### add cflag for Customer ######
 ### ---------- Hisilicon start ---------- ###
@@ -146,8 +136,6 @@ ccflags-y += -DCONFIG_SDIO_INBAND_INT
 #ccflags-y += -DCONFIG_SDIO_BLKSIZE_512
 #ccflags-y += -DCONFIG_SDIO_PWRSEQ
 endif
-
-all_dependencies += install
 endif
 
 ifeq ($(CFG_HI_WIFI_DEVICE_UWE5623),y)
@@ -174,8 +162,6 @@ ccflags-y += -DCONFIG_SDIO_INBAND_INT
 #ccflags-y += -DCONFIG_SDIO_INBAND_POLLING
 #ccflags-y += -DCONFIG_SDIO_BLKSIZE_512
 #ccflags-y += -DCONFIG_SDIO_PWRSEQ
-
-all_dependencies += install
 endif
 
 ifeq ($(CFG_HI_WIFI_DEVICE_UWE5623_USB),y)
@@ -196,8 +182,6 @@ ifneq ($(TARGET_BUILD_VARIANT),user)
 ccflags-y += -DCONFIG_WCN_LOOPCHECK
 ccflags-y += -DCONFIG_CPLOG_DEBUG
 endif
-
-all_dependencies += install
 endif
 
 ### ---------- Hisilicon end ---------- ###
@@ -226,8 +210,6 @@ ccflags-y += -DCONFIG_SDIO_INBAND_INT
 #ccflags-y += -DCONFIG_SDIO_INBAND_POLLING
 ccflags-y += -DCONFIG_SDIO_BLKSIZE_512
 #ccflags-y += -DCONFIG_SDIO_PWRSEQ
-
-driver_dependencies += $(firmware_target)
 endif
 
 ifeq ($(CFG_AML_WIFI_DEVICE_UWE5622),y)
@@ -255,8 +237,6 @@ endif
 #ccflags-y += -DCONFIG_SDIO_INBAND_POLLING
 ccflags-y += -DCONFIG_SDIO_BLKSIZE_512
 #ccflags-y += -DCONFIG_SDIO_PWRSEQ
-
-driver_dependencies += $(firmware_target)
 endif
 ### ---------- Amlogic end ---------- ###
 
@@ -274,8 +254,6 @@ ifneq ($(TARGET_BUILD_VARIANT),user)
 ccflags-y += -DCONFIG_CPLOG_DEBUG
 endif
 #ccflags-y += -DCONFIG_MEM_PD
-
-all_dependencies += install
 endif
 
 ifeq ($(CONFIG_RK_WIFI_DEVICE_UWE5622),y)
@@ -291,8 +269,6 @@ ccflags-y += -DCONFIG_WCN_LOOPCHECK
 ccflags-y += -DCONFIG_CPLOG_DEBUG
 endif
 #ccflags-y += -DCONFIG_MEM_PD
-
-all_dependencies += install
 endif
 ### ---------- Rockchip end ---------- ###
 
@@ -322,8 +298,6 @@ ccflags-y += -DCONFIG_SDIO_INBAND_INT
 #ccflags-y += -DCONFIG_SDIO_INBAND_POLLING
 #ccflags-y += -DCONFIG_SDIO_BLKSIZE_512
 #ccflags-y += -DCONFIG_SDIO_PWRSEQ
-
-all_dependencies += install
 endif
 ### ---------- Allwinner end ---------- ###
 
@@ -378,38 +352,5 @@ $(MODULE_NAME)-$(CONFIG_WCN_SDIO) += \
 		    platform/mem_pd_mgr.o
 
 # wcn module bind verify
-ifeq ($(CONFIG_AW_BIND_VERIFY),y)
-WCN_BSP_TOP := $(dir $(lastword $(MAKEFILE_LIST)))
-$(shell cp $(WCN_BSP_TOP)/platform/wcn_bind_verify.lib $(WCN_BSP_TOP)/platform/wcn_bind_verify.a)
 $(MODULE_NAME)-$(CONFIG_AW_BIND_VERIFY) += \
-		    platform/wcn_bind_verify.a
-endif
-
-KDIR ?= $(ANDROID_PRODUCT_OUT)/obj/KERNEL_OBJ
-ARCH ?= arm
-CROSS_COMPILE ?= arm-histbv310-linux-
-
-EXTRA_CFLAGS += -I$(src)/include -D__linux__
-
-all: $(all_dependencies)
-
-$(firmware_target): $(firmware_file)
-	@echo Convert $(firmware_file) to $(firmware_target)
-	@$(BIN2HEX_TOOL) $(firmware_file)
-
-driver: $(driver_dependencies)
-	@echo Convert $(firmware_file) to $(firmware_target)
-	@$(BIN2HEX_TOOL) $(firmware_file)
-	@echo build driver
-	$(MAKE) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) -C $(KDIR) M=$(PWD) modules
-
-install:
-	@echo install targets
-	mkdir -p $(ANDROID_PRODUCT_OUT)/system/lib/modules
-	cp -fv $(PWD)/$(MODULE_NAME).ko $(ANDROID_PRODUCT_OUT)/system/lib/modules/$(MODULE_NAME).ko
-	make clean
-
-clean:
-	$(MAKE) -C $(KDIR) M=$(PWD) clean
-	$(RM) Module.markers
-	$(RM) modules.order
+		    platform/wcn_bind_verify.o

@@ -1,8 +1,4 @@
-PWD := $(shell pwd)
-all_dependencies := driver
-
-ccflags-y += -I$(srctree)/drivers/net/wireless/uwe5622/sprdwcn/include
-ccflags-$(ORIGIN_BSP) += -I$(srctree)/../hardware/wifi/unisoc/drivers/unisocwcn/include
+ccflags-y += -I$(srctree)/drivers/net/wireless/uwe5622/unisocwcn/include
 
 ifneq ($(UNISOC_BSP_INCLUDE),)
 ccflags-y += -I$(UNISOC_BSP_INCLUDE)
@@ -48,13 +44,3 @@ sprdwl_ng-objs += debug.o
 #sprdwl_ng-objs += 11h.o
 
 obj-$(CONFIG_WLAN_UWE5622) += sprdwl_ng.o
-
-all: $(all_dependencies)
-driver: $(driver_dependencies)
-	@echo build driver
-	$(MAKE) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) -C $(KDIR) M=$(PWD) modules
-
-clean:
-	$(MAKE) -C $(KDIR) M=$(PWD) clean
-	$(RM) Module.markers
-	$(RM) modules.order
