@@ -21,3 +21,4 @@
 
 
 obj-$(CONFIG_MALI_MIDGARD) += midgard/
+obj-y += base/dma_buf_test_exporter/ base/memory_group_manager/ base/smc_protected_mode_switcher/

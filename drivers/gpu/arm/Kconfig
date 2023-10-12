@@ -22,4 +22,7 @@
 
 menu "ARM GPU Configuration"
 source "drivers/gpu/arm/midgard/Kconfig"
+source "drivers/gpu/arm/base/dma_buf_test_exporter/Kconfig"
+source "drivers/gpu/arm/base/memory_group_manager/Kconfig"
+source "drivers/gpu/arm/base/smc_protected_mode_switcher/Kconfig"
 endmenu
