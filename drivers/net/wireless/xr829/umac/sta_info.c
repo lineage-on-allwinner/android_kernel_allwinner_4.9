@@ -17,7 +17,7 @@
 #include <linux/timer.h>
 #include <linux/rtnetlink.h>
 
-#include <net/mac80211.h>
+#include <xradio/net/mac80211.h>
 #include "ieee80211_i.h"
 #include "driver-ops.h"
 #include "rate.h"

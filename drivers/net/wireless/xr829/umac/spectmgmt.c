@@ -14,9 +14,9 @@
  * published by the Free Software Foundation.
  */
 
-#include <linux/ieee80211.h>
-#include <net/cfg80211.h>
-#include <net/mac80211.h>
+#include <xradio/linux/ieee80211.h>
+#include <xradio/net/cfg80211.h>
+#include <xradio/net/mac80211.h>
 #include "ieee80211_i.h"
 #include "sta_info.h"
 #include "wme.h"

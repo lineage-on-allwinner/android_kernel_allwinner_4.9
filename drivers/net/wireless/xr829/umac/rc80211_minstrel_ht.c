@@ -10,8 +10,8 @@
 #include <linux/skbuff.h>
 #include <linux/debugfs.h>
 #include <linux/random.h>
-#include <linux/ieee80211.h>
-#include <net/mac80211.h>
+#include <xradio/linux/ieee80211.h>
+#include <xradio/net/mac80211.h>
 #include "rate.h"
 #include "rc80211_minstrel.h"
 #include "rc80211_minstrel_ht.h"

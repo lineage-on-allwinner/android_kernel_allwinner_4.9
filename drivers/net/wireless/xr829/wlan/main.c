@@ -18,7 +18,7 @@
 #include <linux/vmalloc.h>
 #include <linux/random.h>
 #include <linux/sched.h>
-#include <net/mac80211.h>
+#include <xradio/net/mac80211.h>
 #include <linux/platform_device.h>
 #include <linux/mutex.h>
 #include <linux/proc_fs.h>

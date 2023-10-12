@@ -11,7 +11,7 @@
 
 /*Linux version 3.4.0 compilation*/
 #include <net/genetlink.h>
-#include <net/cfg80211.h>
+#include <xradio/net/cfg80211.h>
 #include <linux/list.h>
 #include <linux/list_sort.h>
 #include <linux/timer.h>

@@ -31,7 +31,7 @@
 #include <net/netlink.h>
 #endif /* CONFIG_XRADIO_TESTMODE */
 
-#include "net/mac80211.h"
+#include <xradio/net/mac80211.h>
 
 #ifdef TES_P2P_0002_ROC_RESTART
 #include <linux/time.h>

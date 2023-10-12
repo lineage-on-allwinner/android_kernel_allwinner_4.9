@@ -17,8 +17,8 @@
 #include <linux/etherdevice.h>
 #include <linux/rcupdate.h>
 #include <linux/export.h>
-#include <net/mac80211.h>
-#include <net/ieee80211_radiotap.h>
+#include <xradio/net/mac80211.h>
+#include <xradio/net/ieee80211_radiotap.h>
 
 #include "ieee80211_i.h"
 #include "driver-ops.h"

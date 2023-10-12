@@ -2,7 +2,7 @@
 #define __MAC80211_DRIVER_TRACE
 
 #include <linux/tracepoint.h>
-#include <net/mac80211.h>
+#include <xradio/net/mac80211.h>
 #include "ieee80211_i.h"
 
 #if !defined(CONFIG_XRMAC_DRIVER_API_TRACER) || defined(__CHECKER__)

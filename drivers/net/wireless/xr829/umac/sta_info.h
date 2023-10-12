@@ -13,7 +13,7 @@
 #include <linux/types.h>
 #include <linux/if_ether.h>
 #include <linux/workqueue.h>
-#include <linux/average.h>
+#include <xradio/linux/average.h>
 #include "key.h"
 
 /**

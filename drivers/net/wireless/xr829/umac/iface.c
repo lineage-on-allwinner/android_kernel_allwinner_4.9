@@ -16,8 +16,8 @@
 #include <linux/if_arp.h>
 #include <linux/netdevice.h>
 #include <linux/rtnetlink.h>
-#include <net/mac80211.h>
-#include <net/ieee80211_radiotap.h>
+#include <xradio/net/mac80211.h>
+#include <xradio/net/ieee80211_radiotap.h>
 #include "ieee80211_i.h"
 #include "sta_info.h"
 #include "debugfs_netdev.h"

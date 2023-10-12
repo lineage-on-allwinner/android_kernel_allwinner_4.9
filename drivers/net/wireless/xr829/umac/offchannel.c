@@ -13,7 +13,7 @@
  * published by the Free Software Foundation.
  */
 #include <linux/export.h>
-#include <net/mac80211.h>
+#include <xradio/net/mac80211.h>
 #include "ieee80211_i.h"
 #include "driver-trace.h"
 #include "driver-ops.h"

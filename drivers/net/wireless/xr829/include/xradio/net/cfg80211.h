@@ -20,9 +20,9 @@
 #include <linux/skbuff.h>
 #include <uapi/linux/nl80211.h>
 #include <linux/if_ether.h>
-#include <linux/ieee80211.h>
+#include <xradio/linux/ieee80211.h>
 #include <linux/net.h>
-#include <net/regulatory.h>
+#include <xradio/net/regulatory.h>
 
 /**
  * DOC: Introduction

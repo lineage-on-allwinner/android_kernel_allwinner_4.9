@@ -8,7 +8,7 @@
  * published by the Free Software Foundation.
  */
 #include <generated/uapi/linux/version.h>
-#include <net/mac80211.h>
+#include <xradio/net/mac80211.h>
 #include <linux/module.h>
 #include <linux/init.h>
 #include <linux/netdevice.h>
@@ -22,7 +22,7 @@
 #include <linux/pm_qos.h>
 #include <linux/inetdevice.h>
 #include <net/net_namespace.h>
-#include <net/cfg80211.h>
+#include <xradio/net/cfg80211.h>
 #include <uapi/linux/netdevice.h>
 
 #ifdef IPV6_FILTERING

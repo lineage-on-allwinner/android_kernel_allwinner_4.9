@@ -17,9 +17,9 @@
 #include <linux/if_ether.h>
 #include <linux/skbuff.h>
 #include <linux/device.h>
-#include <linux/ieee80211.h>
+#include <xradio/linux/ieee80211.h>
 #include <generated/uapi/linux/version.h>
-#include <net/cfg80211.h>
+#include <xradio/net/cfg80211.h>
 #include <asm/unaligned.h>
 
 #ifdef IPV6_FILTERING

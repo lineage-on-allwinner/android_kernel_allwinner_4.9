@@ -14,7 +14,7 @@
 #include <linux/poll.h>
 #include <linux/time.h>
 #include <linux/kallsyms.h>
-#include <net/mac80211.h>
+#include <xradio/net/mac80211.h>
 #include "xradio.h"
 #include "itp.h"
 #include "sta.h"

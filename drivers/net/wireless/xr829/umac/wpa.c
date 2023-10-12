@@ -11,10 +11,10 @@
 #include <linux/types.h>
 #include <linux/skbuff.h>
 #include <linux/compiler.h>
-#include <linux/ieee80211.h>
+#include <xradio/linux/ieee80211.h>
 #include <linux/gfp.h>
 #include <asm/unaligned.h>
-#include <net/mac80211.h>
+#include <xradio/net/mac80211.h>
 #include <crypto/aes.h>
 
 #include "ieee80211_i.h"

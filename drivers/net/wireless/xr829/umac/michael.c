@@ -7,8 +7,8 @@
  * published by the Free Software Foundation.
  */
 #include <linux/types.h>
-#include <linux/bitops.h>
-#include <linux/ieee80211.h>
+#include <xradio/linux/bitops.h>
+#include <xradio/linux/ieee80211.h>
 #include <asm/unaligned.h>
 
 #include "michael.h"

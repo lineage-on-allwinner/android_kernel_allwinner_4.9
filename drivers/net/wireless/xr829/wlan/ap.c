@@ -13,7 +13,7 @@
 #include "sta.h"
 #include "ap.h"
 #include "bh.h"
-#include "net/mac80211.h"
+#include <xradio/net/mac80211.h>
 
 #define XRADIO_LINK_ID_GC_TIMEOUT        ((unsigned long)(10 * HZ))
 #define XRADIO_ENABLE_ARP_FILTER_OFFLOAD  3
