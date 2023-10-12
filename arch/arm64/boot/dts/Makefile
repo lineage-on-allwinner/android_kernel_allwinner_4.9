@@ -34,7 +34,7 @@ targets += dtbs
 
 # Include specified fex file into dtc args if required
 ifeq ($(CONFIG_DT_INCLUDE_FEX),y)
-DTC_FLAGS := -F $(addprefix $(dtstree)/fex/, $(CONFIG_DT_FEX_NAME))
+DTC_FLAGS := -F $(addprefix $(srctree)/arch/arm64/boot/fex/, $(CONFIG_DT_FEX_NAME))
 endif
 
 DTB_NAMES := $(subst $\",,$(CONFIG_BUILD_ARM64_APPENDED_DTB_IMAGE_NAMES))
