@@ -7,14 +7,14 @@
  */
 
 #include <generated/uapi/linux/version.h>
-#include <linux/ieee80211.h>
-#include <uapi/linux/nl80211.h>
+#include <xradio/linux/ieee80211.h>
+#include <xradio/uapi/linux/nl80211.h>
 #include <linux/rtnetlink.h>
 #include <linux/slab.h>
 #include <net/net_namespace.h>
 #include <linux/rcupdate.h>
 #include <linux/if_ether.h>
-#include <net/cfg80211.h>
+#include <xradio/net/cfg80211.h>
 #include "ieee80211_i.h"
 #include "driver-ops.h"
 #include "cfg.h"

@@ -18,7 +18,7 @@
 #include <net/sch_generic.h>
 #include <linux/slab.h>
 #include <linux/export.h>
-#include <net/mac80211.h>
+#include <xradio/net/mac80211.h>
 
 #include "ieee80211_i.h"
 #include "driver-ops.h"

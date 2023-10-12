@@ -19,7 +19,7 @@
 #include <linux/if_arp.h>
 #include <linux/etherdevice.h>
 #include <linux/rtnetlink.h>
-#include <net/mac80211.h>
+#include <xradio/net/mac80211.h>
 #include <asm/unaligned.h>
 
 #include "ieee80211_i.h"

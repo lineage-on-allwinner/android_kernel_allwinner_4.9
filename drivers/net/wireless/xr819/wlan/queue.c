@@ -9,7 +9,7 @@
  * published by the Free Software Foundation.
  */
 
-#include <net/mac80211.h>
+#include <xradio/net/mac80211.h>
 #include <linux/sched.h>
 #include "xradio.h"
 #include "queue.h"

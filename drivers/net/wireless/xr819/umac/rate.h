@@ -15,7 +15,7 @@
 #include <linux/skbuff.h>
 #include <linux/types.h>
 #include <linux/kref.h>
-#include <net/mac80211.h>
+#include <xradio/net/mac80211.h>
 #include "ieee80211_i.h"
 #include "sta_info.h"
 

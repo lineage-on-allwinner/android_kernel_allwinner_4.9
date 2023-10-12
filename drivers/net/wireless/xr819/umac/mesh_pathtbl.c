@@ -13,7 +13,7 @@
 #include <linux/slab.h>
 #include <linux/spinlock.h>
 #include <linux/string.h>
-#include <net/mac80211.h>
+#include <xradio/net/mac80211.h>
 #include "wme.h"
 #include "ieee80211_i.h"
 #include "mesh.h"

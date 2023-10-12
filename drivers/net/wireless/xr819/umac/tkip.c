@@ -7,13 +7,13 @@
  * published by the Free Software Foundation.
  */
 #include <linux/kernel.h>
-#include <linux/bitops.h>
+#include <xradio/linux/bitops.h>
 #include <linux/types.h>
 #include <linux/netdevice.h>
 #include <linux/export.h>
 #include <asm/unaligned.h>
 
-#include <net/mac80211.h>
+#include <xradio/net/mac80211.h>
 #include "driver-ops.h"
 #include "key.h"
 #include "tkip.h"

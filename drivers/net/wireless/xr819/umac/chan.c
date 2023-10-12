@@ -2,7 +2,7 @@
  * mac80211 - channel management
  */
 
-#include <uapi/linux/nl80211.h>
+#include <xradio/uapi/linux/nl80211.h>
 #include "ieee80211_i.h"
 
 static enum ieee80211_chan_mode

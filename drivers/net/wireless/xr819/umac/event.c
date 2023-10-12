@@ -7,7 +7,7 @@
  *
  * mac80211 - events
  */
-#include <net/cfg80211.h>
+#include <xradio/net/cfg80211.h>
 #include "ieee80211_i.h"
 
 /*

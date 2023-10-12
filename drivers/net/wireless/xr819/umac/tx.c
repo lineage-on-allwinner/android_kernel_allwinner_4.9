@@ -20,9 +20,9 @@
 #include <linux/rcupdate.h>
 #include <linux/export.h>
 #include <net/net_namespace.h>
-#include <net/ieee80211_radiotap.h>
-#include <net/cfg80211.h>
-#include <net/mac80211.h>
+#include <xradio/net/ieee80211_radiotap.h>
+#include <xradio/net/cfg80211.h>
+#include <xradio/net/mac80211.h>
 #include <asm/unaligned.h>
 
 #include "ieee80211_i.h"

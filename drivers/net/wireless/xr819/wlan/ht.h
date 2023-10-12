@@ -11,7 +11,7 @@
 #ifndef XRADIO_HT_H_INCLUDED
 #define XRADIO_HT_H_INCLUDED
 
-#include <net/mac80211.h>
+#include <xradio/net/mac80211.h>
 
 struct xradio_ht_info {
 	struct ieee80211_sta_ht_cap  ht_cap;

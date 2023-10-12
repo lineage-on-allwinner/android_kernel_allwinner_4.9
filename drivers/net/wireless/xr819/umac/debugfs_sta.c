@@ -9,7 +9,7 @@
  */
 
 #include <linux/debugfs.h>
-#include <linux/ieee80211.h>
+#include <xradio/linux/ieee80211.h>
 #include "ieee80211_i.h"
 #include "debugfs.h"
 #include "debugfs_sta.h"

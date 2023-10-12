@@ -23,7 +23,7 @@
 #include <linux/crc32.h>
 #include <linux/slab.h>
 #include <linux/export.h>
-#include <net/mac80211.h>
+#include <xradio/net/mac80211.h>
 #include <asm/unaligned.h>
 
 #include "ieee80211_i.h"

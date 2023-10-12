@@ -15,7 +15,7 @@
 #include <linux/slab.h>
 #include <linux/export.h>
 
-#include <net/mac80211.h>
+#include <xradio/net/mac80211.h>
 #include "rate.h"
 
 #include "rc80211_pid.h"

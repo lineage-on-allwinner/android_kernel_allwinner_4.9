@@ -11,7 +11,7 @@
  */
 
 #include <linux/netdevice.h>
-#include <linux/wireless.h>
+#include <xradio/linux/wireless.h>
 #include <net/iw_handler.h>
 
 /*

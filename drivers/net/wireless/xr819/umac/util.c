@@ -11,7 +11,7 @@
  * utilities for mac80211
  */
 
-#include <net/mac80211.h>
+#include <xradio/net/mac80211.h>
 #include <linux/netdevice.h>
 #include <linux/export.h>
 #include <linux/types.h>
@@ -22,7 +22,7 @@
 #include <linux/bitmap.h>
 #include <linux/crc32.h>
 #include <net/net_namespace.h>
-#include <net/cfg80211.h>
+#include <xradio/net/cfg80211.h>
 #include <net/rtnetlink.h>
 
 #include "ieee80211_i.h"
